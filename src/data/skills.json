@@ -1,0 +1,33 @@
+[
+    {
+        "category": "Core Capabilities",
+        "items": [
+            "Frontend Development", 
+            "Responsive & Mobile-First Design", 
+            "UI Development", "Write Code",  
+            "No Code", 
+            "Less Code", 
+            "Collaboration"
+        ]
+    },
+    {
+        "category": "Finance & Trading",
+        "items": ["BSc Ed, Economics Education", "Forex Trader", "Stock Trader", "Financial Analysis", "Economics"]
+    },
+    {
+        "category": "Tech Stack",
+        "items": ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "Typescript", "TAILWIND CSS", "BOOTSTRAP 5", "Git", "Github", "GitLab", "Vercel", "Netlify"]
+    },
+    {
+        "category": "Currently Learning - Tech",
+        "items": ["Node.js", "Expressjs", "MongoDB" ]
+    },
+    {
+        "category": "Currently Learning - Finance",
+        "items": ["Wealth Management"]
+    },
+    {
+        "category": "Services",
+        "items": ["Shopify Store Development", "Custom Website Development", "UI Implementation from Design"]
+    }
+]

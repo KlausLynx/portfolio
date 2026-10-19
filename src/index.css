@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* This creates a 'text-accent' utility automatically */
+  --color-accent: var(--accent-color);
+}
+
+:root {
+  --bg-color: #000000;
+  --primary-color: #3B82F6;
+  --secondary-color: #fffa00;
+  --text-color: #F7F7F7;
+  --accent-color: #7b2e00;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 3px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #1e1e2e;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+  height: 10px
+}
+
+
+
+
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  
+
+}
+
