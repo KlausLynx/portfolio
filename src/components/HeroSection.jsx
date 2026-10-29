@@ -4,45 +4,81 @@ import gsap from 'gsap'
 import '../index.css'
 import { MyFigure } from './MyheroImage'
 import Navbar from '../Layouts/Navbar'
-import CV from '../assets/Okechukwu-Vitus (4).pdf'
+import CV from '../assets/Resume.pdf'
 
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-
 const LINES = [
     'HELLO!',
     "I'm Jide-Onyia Okechukwu Vitus, aka Klaus Lynx.",
     'a Shopify/web developer and Economist.',
     'Welcome to my portfolio!',
-]
+    ]
 
-function scrambledLine(line, progress) {
+    function scrambledLine(line, progress) {
     const lockedCount = Math.floor(progress * line.length)
     let out = ''
     for (let i = 0; i < line.length; i++) {
         if (line[i] === ' ' || i < lockedCount) {
-            out += line[i]
+        out += line[i]
         } else {
-            out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+        out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
         }
     }
     return out
-}
+    }
 
-export default function Hero({showCaseDom}) {
+    export default function Hero({ showCaseDom }) {
     const [introDone, setIntroDone] = useState(false)
-
     const navRef = useRef(null)
     const creativeRef = useRef(null)
     const introGroupRef = useRef(null)
     const textRef = useRef(null)
+    const wrapperRef = useRef(null)
 
+    const [scroll, setScroll] = useState(0)
+    const [pos, setPos] = useState({ left: 0, top: 0 })
+    const [isscroll, setIsScroll] = useState(false)
+    const [dimensions, setDimensions] = useState({ vw: 1200, vh: 800 })
+
+    // Handles responsive calculations dynamically safely
+    useEffect(() => {
+        const handleScroll = () => {
+        const vw = document.documentElement.clientWidth
+        const vh = document.documentElement.clientHeight
+        setDimensions({ vw, vh })
+
+        const rect = wrapperRef.current?.getBoundingClientRect()
+        if (rect) {
+            setPos({ left: rect.left, top: rect.top })
+        }
+        
+        setScroll(Math.min(window.scrollY / window.innerHeight, 1))
+        const started = window.scrollY > 0
+        const projectDom = showCaseDom.current?.getBoundingClientRect().top
+
+        if (projectDom > 0 && started) {
+            setIsScroll(true)
+        } else {
+            setIsScroll(false)
+        }
+        }
+
+        handleScroll()
+        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('resize', handleScroll)
+        return () => {
+        window.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
+        }
+    }, [showCaseDom])
+
+    // GSAP: Intro Scramble Animation
     useGSAP(() => {
         const group = introGroupRef.current
         const text = textRef.current
-
         if (!group || !text) {
-            setIntroDone(true)
-            return
+        setIntroDone(true)
+        return
         }
 
         const rect = group.getBoundingClientRect()
@@ -54,131 +90,103 @@ export default function Hero({showCaseDom}) {
         gsap.set(group, { x: startX, y: startY })
 
         const proxy = { p: 0 }
-
         gsap.delayedCall(0.4, () => {
-            gsap.to(proxy, {
-                p: 1,
-                duration: 2.2,
-                ease: 'power2.inOut',
-                onUpdate: () => {
-                    gsap.set(group, { x: startX * (1 - proxy.p), y: startY * (1 - proxy.p) })
-                    text.innerHTML = LINES.map((line) => scrambledLine(line, proxy.p)).join('<br/>')
-                },
-                onComplete: () => {
-                    gsap.set(group, { x: 0, y: 0 })
-                    setIntroDone(true)
-                },
-            })
+        gsap.to(proxy, {
+            p: 1,
+            duration: 1,
+            ease: 'power2.inOut',
+            onUpdate: () => {
+            gsap.set(group, { x: startX * (1 - proxy.p), y: startY * (1 - proxy.p) })
+            text.innerHTML = LINES.map((line) => scrambledLine(line, proxy.p)).join('<br/>')
+            },
+            onComplete: () => {
+            gsap.set(group, { x: 0, y: 0 })
+            setIntroDone(true)
+            },
+        })
         })
     }, [])
 
+    // GSAP: Reveal UI Elements
     useGSAP(() => {
         if (!introDone) return
-
         gsap.timeline()
-            .to(navRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
-            .to(creativeRef.current, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+        .to(navRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+        .to(creativeRef.current, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3')
     }, [introDone])
 
-    const distance = window.innerHeight
-    const [scroll, setScroll] = useState(0)
-    const wrapperRef = useRef(null)
-    const [pos, setPos] = useState({ left: 0, top: 0 })
-    const [isscroll, setIsScroll] = useState(false)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const rect = wrapperRef.current?.getBoundingClientRect()
-            if (rect) setPos({ left: rect.left, top: rect.top })
-
-            setScroll(Math.min(window.scrollY / window.innerHeight, 1))
-            const started = window.scrollY > 0
-            const projectDom = showCaseDom.current?.getBoundingClientRect().top
-            console.log('ProjectShowCase top position:', projectDom)
-            if(projectDom > 0 && started) {
-                setIsScroll(true)
-            } else {
-                setIsScroll(false)
-            }
-        }
-
-
-        handleScroll()
-        window.addEventListener('scroll', handleScroll)
-        window.addEventListener('resize', handleScroll)
-
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-            window.removeEventListener('resize', handleScroll)
-        }
-    }, [showCaseDom])
-
     const margin = 20
-    const vw = document.documentElement.clientWidth
-    const vh = document.documentElement.clientHeight
-    const maxW = vw - margin * 2
-    const maxH = vh - margin * 2
+    const maxW = dimensions.vw - margin * 2
+    const maxH = dimensions.vh - margin * 2
+    const distance = maxH
 
     return (
-        <div className='m-8 text-sm'>
-            <section className='flex flex-col gap-10 ' style={{ paddingBottom: distance }}>
-                <div
-                    ref={navRef}
-                    className='flex justify-between items-center opacity-0 -translate-y-4'
+        <div className='min-h-screen px-4 md:px-8 py-2 text-sm overflow-x-hidden'>
+        {/* SECTION WITH FIXED DYNAMIC PADDING */}
+        <section className='flex flex-col' style={{ paddingBottom: distance }}>
+            
+            {/* RESPONSIVE HEADER BAR */}
+            <div ref={navRef} className='flex flex-col gap-4 sm:flex-row justify-between items-center opacity-0 -translate-y-4 border-b border-gray-100 pb-4 dark:border-zinc-800' >
+            <div className='flex justify-between items-center w-full sm:w-auto gap-5'>
+                <h1 className="text-xl md:text-3xl font-bold tracking-wider text-accent">LynxCode</h1>
+                <a 
+                href={CV} 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                className='group relative inline-block overflow-hidden border-2 border-accent px-4 py-1.5 rounded-md text-center cursor-pointer text-sm font-medium md:text-base'
                 >
-                    <header className='flex justify-between items-center gap-5'>
-                        <h1 className="text-base md:text-4xl lg:text-5xl">LynxCode</h1>
-                        <a
-                            href={CV}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='group relative inline-block overflow-hidden border-2 border-accent px-6 py-2 rounded-md text-center cursor-pointer md:text-xl lg:text-2xl'
-                            >
-                            <span className='absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></span>
-                            <span className='relative transition-colors duration-300 group-hover:text-white'>See CV</span>
-                        </a>
-                    </header>
+                <span className='absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></span>
+                <span className='relative transition-colors duration-300 group-hover:text-black'>See CV</span>
+                </a>
+            </div>
+            <div className="w-full sm:w-auto flex justify-center sm:justify-end">
+                <Navbar />
+            </div>
+            </div>
 
-                    <div><Navbar/></div>
+            {/* HERO BODY AREA */}
+            <div className='flex flex-col flex-1 justify-center gap-16 md:gap-24 mt-12'>
+            
+            {/* INTRO TEXT SCRAMBLER OVERLAY / CONTAINER */}
+            <div ref={introGroupRef} className="flex items-center justify-center max-w-2xl mx-auto px-4">
+                <span className="bg-transparent inline-block border-l-4 border-accent h-32 md:h-48 w-2 md:w-8" />
+                <p ref={textRef} className="text-center font-mono leading-relaxed text-xs sm:text-sm md:text-lg lg:text-xl px-4 flex-1">
+                Loading
+                </p>
+                <span className="bg-transparent inline-block border-r-4 border-accent h-32 md:h-48 w-2 md:w-8" />
+            </div>
+
+            {/* SCROLL TRANSFORMING HERO WORKCASE */}
+            <div 
+                ref={creativeRef} 
+                className='flex flex-col justify-center items-center gap-4 md:flex-row md:gap-8 opacity-0 w-full'
+            >
+                <p className='font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase'>
+                Creative
+                </p>
+                
+                {/* Morphing Interactive Wrapper */}
+                <div ref={wrapperRef} className="shrink-0 flex items-center justify-center  my-4 md:my-0" style={{ width: 200, height: 150 }}>
+                <div 
+                    className='flex items-center justify-center overflow-hidden' 
+                    style={{ 
+                    position: isscroll ? 'fixed' : 'static', 
+                    left: isscroll ? pos.left + ((dimensions.vw - maxW) / 2 - pos.left) * scroll : 'auto', 
+                    top: isscroll ? pos.top + ((dimensions.vh - maxH) / 2 - pos.top) * scroll : 'auto', 
+                    width: isscroll ? 200 + (maxW - 200) * scroll : 200, 
+                    height: isscroll ? 150 + (maxH - 150) * scroll : 150,
+                    }}
+                >
+                    <MyFigure />
+                </div>
                 </div>
 
-                <div className='flex flex-col flex-1 justify-center gap-20'>
-                    <div ref={introGroupRef} className="flex items-center justify-center">
-                        <span className="bg-transparent inline-block border-8 border-(--accent-color) border-r-transparent border-t-transparent border-b-transparent rounded-full h-48 w-8 -mr-50 md:w-48 md:-mr-20"/>
-
-                        <p ref={textRef} className="text-center text-sm sm:text-base md:text-xl lg:text-2xl">
-                            Loading
-                        </p>
-
-                        <span className="bg-transparent inline-block border-8 border-(--accent-color) border-l-transparent border-t-transparent border-b-transparent rounded-full h-48 w-8 -ml-50 md:w-48 md:-ml-20"/>
-                    </div>
-
-                    <div
-                        ref={creativeRef}
-                        className='flex flex-col flex-1 justify-center md:flex-row items-center gap-6 md:justify-center opacity-0'
-                    >
-                        <p className='font-black italic text-7xl lg:text-9xl'>Creative</p>
-
-                        <div ref={wrapperRef} className="shrink-0 flex items-center justify-center" style={{ width: 200, height: 200 }}>
-                            <div
-                                className='flex items-center justify-center'
-                                style={{
-                                    position: isscroll ? 'fixed' : 'static',
-                                    left: pos.left + ((vw - maxW) / 2 - pos.left) * scroll,
-                                    top: pos.top + ((vh - maxH) / 2 - pos.top) * scroll,
-                                    width: 200 + (maxW - 200) * scroll,
-                                    height: 200 + (maxH - 200) * scroll,
-                                }}
-                            >
-                                <MyFigure />
-                            </div>
-                        </div>
-
-                        <p className="font-black italic text-7xl lg:text-9xl">Dev</p>
-                    </div>
-                </div>
-            </section>
+                <p className="font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase">
+                Dev
+                </p>
+            </div>
+            </div>
+        </section>
         </div>
     )
 }

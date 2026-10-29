@@ -5,17 +5,17 @@ export const navRoutes = [
         name: "Home",
     },
     {
-        path: "/about",
+        path: "#about",
         id: 'about',
         name: "About",
     },
     {
-        path: "/projects",
+        path: "#projects",
         id: 'projects',
         name: "Projects",
     },
     {
-        path: "/contact",
+        path: "#contact",
         id: 'contact',
         name: "Contact",
     },

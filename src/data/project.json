@@ -1,28 +1,88 @@
 [
     {
-        "bg": "radial-gradient(circle at 30% 35%, #22C55E 0%, #0D0F0E 70%)",
-        "category": "NaijaEconStats WEBSITE",
-        "stack": ["NEXTJS, "],
-        "url": "",
-        "title": "NaijaEconStats",
-        "description": "This is the naijaeconstats website, a platform that provides comprehensive economic statistics and insights for Nigeria. It offers users access to a wide range of data, including GDP, inflation rates, employment figures, and more. The website is designed to be user-friendly and informative, catering to researchers, policymakers, and anyone interested in understanding the Nigerian economy.",
+        "bg": "radial-gradient(circle at 30% 35%, #008751 0%, #0D0F0E 70%)",
+        "color": "#008751",
+        "category": "NIGERIA MONETARY VALUE WEBSITE",
+        "stack": ["REACT", "TAILWIND CSS"],
+        "url": "https://naijaeconstats.netlify.app/",
+        "title": "Nigeria Monetary Value",
+        "description": "A web app that shows Nigeria's inflation and exchange rates across every era since independence, and how each era carried the country. It also includes a money time machine that tells you what your money today was worth in the past, or what money from the past is worth today.",
         "images": [
-            "/projects/modevelle-1.png",
-            "/projects/modevelle-2.png",
-            "/projects/modevelle-3.png"
+        "/projects/monetary-value-1.png",
+        "/projects/monetary-value-2.png",
+        "/projects/monetary-value-3.png"
         ]
     },
     {
-        "bg": "radial-gradient(circle at 30% 35%, #8B5E3C 0%, #0D0F0E 70%)",
-        "category": "Nigerian Economy WEBSITE",
-        "stack": ["NEXTJS, "],
-        "url": "",
-        "title": "Nigerian Economy",
-        "description":"This is the nigerianeconomy website, a platform that provides comprehensive insights into the Nigerian economy. It offers users access to a wide range of economic data, including GDP, inflation rates, employment figures, and more. The website is designed to be user-friendly and informative, catering to researchers, policymakers, and anyone interested in understanding the Nigerian economy.",
+        "bg": "radial-gradient(circle at 30% 35%, #4F46E5 0%, #0D0F0E 70%)",
+        "color": "#4F46E5",
+        "category": "NIGERIA ECONOMIC STATISTICS WEBSITE",
+        "stack": ["REACT", "TAILWIND CSS"],
+        "url": "https://naija-met.vercel.app/",
+        "title": "Nigeria Economic Statistics",
+        "description": "An in-depth web app that presents Nigeria's economic data in a clear, easy-to-read way for anyone who wants to understand the economy.",
         "images": [
-            "/projects/shearroom-1.png",
-            "/projects/shearroom-2.png",
-            "/projects/shearroom-3.png"
+        "/projects/economic-stats-1.png",
+        "/projects/economic-stats-2.png",
+        "/projects/economic-stats-3.png"
+        ]
+    },
+    {
+        "bg": "radial-gradient(circle at 30% 35%, #E11D74 0%, #0D0F0E 70%)",
+        "color": "#E11D74",
+        "category": "GLOWSTUDIO WEBSITE",
+        "stack": ["SHOPIFY", "REACT", "TAILWIND CSS", "JAVASCRIPT", "GSAP"],
+        "url": "https://glow-studio-dev.myshopify.com/",
+        "title": "GlowStudio",
+        "password": "0",
+        "description": "A hair-care website for men and women. Customers can book hair sessions and buy hair creams (the cream range is for women only). Animations are built with GSAP.",
+        "images": [
+        "/projects/glowstudio-1.png",
+        "/projects/glowstudio-2.png",
+        "/projects/glowstudio-3.png"
+        ]
+    },
+    {
+        "bg": "radial-gradient(circle at 30% 35%, #E9C46A 0%, #0D0F0E 70%)",
+        "color": "#E9C46A",
+        "category": "ONLYCREAMS STORE",
+        "stack": ["SHOPIFY", "LIQUID"],
+        "url": "https://only-creams.myshopify.com/",
+        "title": "OnlyCreams",
+        "password": "2",
+        "description": "An online cream store built on Shopify with custom theme code written in Liquid.",
+        "images": [
+        "/projects/onlycreams-1.png",
+        "/projects/onlycreams-2.png",
+        "/projects/onlycreams-3.png"
+        ]
+    },
+    {
+        "bg": "radial-gradient(circle at 30% 35%, #DC2626 0%, #0D0F0E 70%)",
+        "color": "#DC2626",
+        "category": "CHURASHAWARMA WEBSITE",
+        "stack": ["REACT", "TAILWIND CSS", "JAVASCRIPT", "WHATSAPP LINK"],
+        "url": "https://churashawarma.netlify.app/",
+        "title": "Churashawarma",
+        "description": "A shawarma ordering website with a menu, ordering, and delivery options. Every order is sent straight to the owner's WhatsApp DM, so the business gets orders instantly.",
+        "images": [
+        "/projects/churashawarma-1.png",
+        "/projects/churashawarma-2.png",
+        "/projects/churashawarma-3.png"
+        ]
+    },
+    {
+        "bg": "radial-gradient(circle at 30% 35%, #1E3A8A 0%, #0D0F0E 70%)",
+        "color": "#1E3A8A",
+        "category": "2026 YEARBOOK WEBSITE",
+        "stack": ["SUPABASE", "REACT", "TAILWIND CSS"],
+        "url": "https://ccu026yearbookwall.netlify.app/faculty",
+        "title": "2026 Yearbook",
+        "description": "A digital yearbook for the 2026 graduating class of Coal City University. Joining was optional, so each student chose whether to appear on the wall.",
+        "images": [
+        "/projects/yearbook-1.png",
+        "/projects/yearbook-2.png",
+        "/projects/yearbook-3.png"
         ]
     }
 ]

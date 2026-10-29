@@ -7,11 +7,11 @@
 }
 
 :root {
-  --bg-color: #000000;
+  --bg-color: #0B0B0B;
   --primary-color: #3B82F6;
   --secondary-color: #fffa00;
   --text-color: #F7F7F7;
-  --accent-color: #7b2e00;
+  --accent-color: #00F0FF;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
