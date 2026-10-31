@@ -1,4 +1,6 @@
 import { FaWhatsapp, FaLinkedin, FaDiscord, FaFacebook, FaThreads, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
+import  Logo from '../assets/Klaus Logo.png';
+
 
 const socials = [
     { name: "WhatsApp", url: "https://wa.me/2347067179435", icon: FaWhatsapp, brandColor: "hover:text-[#25D366]" },
@@ -48,37 +50,40 @@ export const Footer = () => {
 
             {/* Social Links Grid */}
             <div id="contact" className="flex flex-col gap-4 w-full md:w-auto">
-            <p className="text-xs font-semibold uppercase tracking-widest text-neutral-500">
-                Social Links
-            </p>
-            <ul className="grid grid-cols-2 gap-x-12 gap-y-3.5 sm:grid-cols-4 md:grid-cols-2">
-                {socials.map((social) => {
-                const Icon = social.icon;
-                return (
-                    <li key={social.name}>
-                    <a 
-                        href={social.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center gap-3 text-neutral-400 hover:text-neutral-100 transition-colors duration-200 group text-sm"
-                    >
-                        <span className={`text-lg text-neutral-500 transition-colors duration-200 ${social.brandColor}`}>
-                        <Icon />
-                        </span>
-                        {social.name}
-                    </a>
-                    </li>
-                );
-                })}
-            </ul>
+                <p className="text-xs font-semibold uppercase tracking-widest text-neutral-500">
+                    Social Links
+                </p>
+                <ul className="grid grid-cols-2 gap-x-12 gap-y-3.5 sm:grid-cols-4 md:grid-cols-2">
+                    {socials.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                        <li key={social.name}>
+                        <a 
+                            href={social.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center gap-3 text-neutral-400 hover:text-neutral-100 transition-colors duration-200 group text-sm"
+                        >
+                            <span className={`text-lg text-neutral-500 transition-colors duration-200 ${social.brandColor}`}>
+                            <Icon />
+                            </span>
+                            {social.name}
+                        </a>
+                        </li>
+                    );
+                    })}
+                </ul>
             </div>
         </div>
 
         {/* Name Display Section */}
-        <div className="max-w-6xl mx-auto border-t border-neutral-900 pt-8 mt-8">
-            <p className="text-[11vw] sm:text-[10vw] md:text-[8vw] lg:text-[6.2vw] xl:text-[80px] leading-none text-center font-black text-text select-none uppercase whitespace-nowrap  scale-y-200 tracking-wider">
-            Okechukwu Jide-Onyia
+        <div className="mx-auto border-t border-neutral-900 pt-8 mt-8">
+            <p className="text-[6.5vw] xl:text-[80px] leading-none text-center font-black text-text select-none uppercase whitespace-nowrap scale-y-200 tracking-wider xs:text-[8vw]">
+                Okechukwu Jide-Onyia
             </p>
+            <div className="mx-auto mt-20 flex justify-center"> 
+                <img src={Logo} alt="Logo" className="w-75 h-auto object-contain" /> 
+            </div> 
         </div>
         </footer>
     );

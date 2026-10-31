@@ -16,7 +16,7 @@
     },
     {
         "category": "Tech Stack",
-        "items": ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "Typescript", "TAILWIND CSS", "BOOTSTRAP 5", "Git", "Github", "GitLab", "Vercel", "Netlify"]
+        "items": ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "Typescript", "TAILWIND CSS", "BOOTSTRAP 5", "PHP", "Next.js", "Liquid", "Supabase", "Jotai", "Zustand", "Redux", "Git", "Github", "GitLab", "Vercel", "Netlify"]
     },
     {
         "category": "Currently Learning - Tech",

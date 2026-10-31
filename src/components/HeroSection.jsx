@@ -87,7 +87,7 @@ const LINES = [
         const startX = window.innerWidth / 2 - centerX
         const startY = window.innerHeight / 2 - centerY
 
-        gsap.set(group, { x: startX, y: startY })
+        gsap.set(group, { x: startX, y: startY, opacity: 0 })
 
         const proxy = { p: 0 }
         gsap.delayedCall(0.4, () => {
@@ -96,7 +96,7 @@ const LINES = [
             duration: 1,
             ease: 'power2.inOut',
             onUpdate: () => {
-            gsap.set(group, { x: startX * (1 - proxy.p), y: startY * (1 - proxy.p) })
+            gsap.set(group, { x: startX * (1 - proxy.p), y: startY * (1 - proxy.p), opacity: proxy.p,})
             text.innerHTML = LINES.map((line) => scrambledLine(line, proxy.p)).join('<br/>')
             },
             onComplete: () => {
@@ -121,72 +121,71 @@ const LINES = [
     const distance = maxH
 
     return (
-        <div className='min-h-screen px-4 md:px-8 py-2 text-sm overflow-x-hidden'>
-        {/* SECTION WITH FIXED DYNAMIC PADDING */}
-        <section className='flex flex-col' style={{ paddingBottom: distance }}>
-            
-            {/* RESPONSIVE HEADER BAR */}
-            <div ref={navRef} className='flex flex-col gap-4 sm:flex-row justify-between items-center opacity-0 -translate-y-4 border-b border-gray-100 pb-4 dark:border-zinc-800' >
-            <div className='flex justify-between items-center w-full sm:w-auto gap-5'>
-                <h1 className="text-xl md:text-3xl font-bold tracking-wider text-accent">LynxCode</h1>
-                <a 
-                href={CV} 
-                target='_blank' 
-                rel='noopener noreferrer' 
-                className='group relative inline-block overflow-hidden border-2 border-accent px-4 py-1.5 rounded-md text-center cursor-pointer text-sm font-medium md:text-base'
-                >
-                <span className='absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></span>
-                <span className='relative transition-colors duration-300 group-hover:text-black'>See CV</span>
-                </a>
-            </div>
-            <div className="w-full sm:w-auto flex justify-center sm:justify-end">
-                <Navbar />
-            </div>
-            </div>
-
-            {/* HERO BODY AREA */}
-            <div className='flex flex-col flex-1 justify-center gap-16 md:gap-24 mt-12'>
-            
-            {/* INTRO TEXT SCRAMBLER OVERLAY / CONTAINER */}
-            <div ref={introGroupRef} className="flex items-center justify-center max-w-2xl mx-auto px-4">
-                <span className="bg-transparent inline-block border-l-4 border-accent h-32 md:h-48 w-2 md:w-8" />
-                <p ref={textRef} className="text-center font-mono leading-relaxed text-xs sm:text-sm md:text-lg lg:text-xl px-4 flex-1">
-                Loading
-                </p>
-                <span className="bg-transparent inline-block border-r-4 border-accent h-32 md:h-48 w-2 md:w-8" />
-            </div>
-
-            {/* SCROLL TRANSFORMING HERO WORKCASE */}
-            <div 
-                ref={creativeRef} 
-                className='flex flex-col justify-center items-center gap-4 md:flex-row md:gap-8 opacity-0 w-full'
-            >
-                <p className='font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase'>
-                Creative
-                </p>
+            <div className='min-h-screen px-4 md:px-8 py-2 text-sm overflow-x-clip'>
+            {/* SECTION WITH FIXED DYNAMIC PADDING */}
+            <section className='flex flex-col pt-28 sm:pt-24' style={{ paddingBottom: distance }}>
                 
-                {/* Morphing Interactive Wrapper */}
-                <div ref={wrapperRef} className="shrink-0 flex items-center justify-center  my-4 md:my-0" style={{ width: 200, height: 150 }}>
-                <div 
-                    className='flex items-center justify-center overflow-hidden' 
-                    style={{ 
-                    position: isscroll ? 'fixed' : 'static', 
-                    left: isscroll ? pos.left + ((dimensions.vw - maxW) / 2 - pos.left) * scroll : 'auto', 
-                    top: isscroll ? pos.top + ((dimensions.vh - maxH) / 2 - pos.top) * scroll : 'auto', 
-                    width: isscroll ? 200 + (maxW - 200) * scroll : 200, 
-                    height: isscroll ? 150 + (maxH - 150) * scroll : 150,
-                    }}
-                >
-                    <MyFigure />
-                </div>
+                {/* RESPONSIVE HEADER BAR */}
+                <div ref={navRef} className='fixed top-0 inset-x-0 z-50 px-4 md:px-8 pt-2 bg-white/80 dark:bg-zinc-950/80 backdrop-blur flex flex-col gap-4 sm:flex-row justify-between items-center opacity-0 -translate-y-4 border-b border-gray-100 pb-4 dark:border-zinc-800'>
+                    <div className='flex justify-between items-center w-full sm:w-auto gap-5'>
+                        <h1 className="text-xl md:text-3xl font-bold tracking-wider text-accent">LynxCode</h1>
+                        <a 
+                            href={CV} 
+                            target='_blank' 
+                            rel='noopener noreferrer' 
+                            className='group relative inline-block overflow-hidden border-2 border-accent px-4 py-1.5 rounded-md text-center cursor-pointer text-sm font-medium md:text-base'
+                            >
+                            <span className='absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100'></span>
+                            <span className='relative transition-colors duration-300 group-hover:text-black'>See CV</span>
+                        </a>
+                    </div>
+                    <div className="w-full sm:w-auto flex justify-center sm:justify-end">
+                        <Navbar />
+                    </div>
                 </div>
 
-                <p className="font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase">
-                Dev
-                </p>
-            </div>
-            </div>
-        </section>
+                {/* HERO BODY AREA */}
+                <div className='flex flex-col flex-1 justify-center gap-16 md:gap-24 mt-12'>
+                
+                    {/* INTRO TEXT SCRAMBLER OVERLAY / CONTAINER */}
+                    <div ref={introGroupRef} className="flex items-center justify-center max-w-2xl mx-auto px-4">
+                        <span className="bg-transparent inline-block border-l-4 border-accent h-32 md:h-48 w-2 md:w-8" />
+                        <p ref={textRef} className="text-center font-mono leading-relaxed text-xs sm:text-sm md:text-lg lg:text-xl px-4 flex-1">
+                        Loading
+                        </p>
+                        <span className="bg-transparent inline-block border-r-4 border-accent h-32 md:h-48 w-2 md:w-8" />
+                    </div>
+
+                    {/* SCROLL TRANSFORMING HERO WORKCASE */}
+                    <div 
+                        ref={creativeRef} 
+                        className='flex flex-col justify-center items-center gap-4 md:flex-row md:gap-8 opacity-0 w-full'
+                    >
+                        <p className='font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase'>
+                        Creative
+                        </p>
+                        
+                        {/* Morphing Interactive Wrapper */}
+                        <div ref={wrapperRef} className="shrink-0 flex items-center justify-center  my-4 md:my-0" style={{ width: 200, height: 150 }}>
+                            <div 
+                                className='flex items-center justify-center overflow-hidden' 
+                                style={{ 
+                                position: isscroll ? 'fixed' : 'static', 
+                                left: isscroll ? pos.left + ((dimensions.vw - maxW) / 2 - pos.left) * scroll : 'auto', 
+                                top: isscroll ? pos.top + ((dimensions.vh - maxH) / 2 - pos.top) * scroll : 'auto', 
+                                width: isscroll ? 200 + (maxW - 200) * scroll : 200, 
+                                height: isscroll ? 150 + (maxH - 150) * scroll : 150,
+                                }}
+                            >
+                                <MyFigure />
+                            </div>
+                        </div>
+                        <p className="font-black italic text-5xl sm:text-7xl lg:text-9xl select-none tracking-tighter uppercase">
+                        Dev
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

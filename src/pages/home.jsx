@@ -4,6 +4,7 @@ import { SkillsSection } from '../components/SkillsSection'
 import { AboutSection } from '../components/aboutSection'
 import { CoreValue } from '../components/CoreValues'
 import { Footer } from '../Layouts/Footer'
+import { ScrollTop } from "../components/ScrollToTop";
 import { useRef } from 'react'
 export default function Home () {
     const projectShowCase = useRef(null)
@@ -15,6 +16,7 @@ export default function Home () {
             <AboutSection/>
             <CoreValue/>
             <Footer/>
+            <ScrollTop/>
         </>
         
     )

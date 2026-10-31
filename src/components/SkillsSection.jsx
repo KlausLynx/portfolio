@@ -154,6 +154,9 @@ export const SkillsSection = () => {
 
     return (
         <div className='w-full max-w-[1152px] mx-auto px-4 mt-12 md:mt-24 lg:mt-36 select-none'>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white m-2 text-center">
+                My Skills & Abilities
+            </h2>
         <div 
             className='w-full h-[480px] sm:h-[420px] md:h-[480px] border-b-4 border-accent/30 bg-slate-50/40 dark:bg-zinc-900/20 rounded-3xl pt-5 relative overflow-hidden shadow-inner' 
             ref={containerRef}

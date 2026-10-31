@@ -8,9 +8,8 @@
         "title": "Nigeria Monetary Value",
         "description": "A web app that shows Nigeria's inflation and exchange rates across every era since independence, and how each era carried the country. It also includes a money time machine that tells you what your money today was worth in the past, or what money from the past is worth today.",
         "images": [
-        "/projects/monetary-value-1.png",
-        "/projects/monetary-value-2.png",
-        "/projects/monetary-value-3.png"
+        "../assets/monetary-1.png",
+        "../assets/monetary-2.png"
         ]
     },
     {
@@ -22,9 +21,8 @@
         "title": "Nigeria Economic Statistics",
         "description": "An in-depth web app that presents Nigeria's economic data in a clear, easy-to-read way for anyone who wants to understand the economy.",
         "images": [
-        "/projects/economic-stats-1.png",
-        "/projects/economic-stats-2.png",
-        "/projects/economic-stats-3.png"
+        "../assets/naijaMet-1.png",
+        "../assets/naijaMet-2.png"
         ]
     },
     {
@@ -37,9 +35,8 @@
         "password": "0",
         "description": "A hair-care website for men and women. Customers can book hair sessions and buy hair creams (the cream range is for women only). Animations are built with GSAP.",
         "images": [
-        "/projects/glowstudio-1.png",
-        "/projects/glowstudio-2.png",
-        "/projects/glowstudio-3.png"
+        "../assets/glow-1.png",
+        "../assets/glow-2.png"
         ]
     },
     {
@@ -52,9 +49,8 @@
         "password": "2",
         "description": "An online cream store built on Shopify with custom theme code written in Liquid.",
         "images": [
-        "/projects/onlycreams-1.png",
-        "/projects/onlycreams-2.png",
-        "/projects/onlycreams-3.png"
+        "../assets/only-cream-1.png",
+        "../assets/only-cream-2.png"
         ]
     },
     {
@@ -66,9 +62,8 @@
         "title": "Churashawarma",
         "description": "A shawarma ordering website with a menu, ordering, and delivery options. Every order is sent straight to the owner's WhatsApp DM, so the business gets orders instantly.",
         "images": [
-        "/projects/churashawarma-1.png",
-        "/projects/churashawarma-2.png",
-        "/projects/churashawarma-3.png"
+        "../assets/chura-1.png",
+        "../assets/chura-2.png"
         ]
     },
     {
@@ -80,9 +75,8 @@
         "title": "2026 Yearbook",
         "description": "A digital yearbook for the 2026 graduating class of Coal City University. Joining was optional, so each student chose whether to appear on the wall.",
         "images": [
-        "/projects/yearbook-1.png",
-        "/projects/yearbook-2.png",
-        "/projects/yearbook-3.png"
+        "../assets/year-1.png",
+        "../assets/year-2.png"
         ]
     }
 ]
